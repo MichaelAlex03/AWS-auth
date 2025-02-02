@@ -1,4 +1,4 @@
-function buildResponse(statusCode, body) {
+export const buildResponse = (statusCode, body) => {
     return {
       statusCode: statusCode,
       headers: {
@@ -9,4 +9,3 @@ function buildResponse(statusCode, body) {
     };
   }
 
-  module.exports = buildResponse
