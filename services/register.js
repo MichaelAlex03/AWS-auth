@@ -1,11 +1,9 @@
-import { AWS } from 'aws-sdk'
 import { buildResponse } from '../utils/util';
+import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import bcrypt from 'bcryptjs'
 
-AWS.config.update({
-    region: 'us-east-1'
-})
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+
+const dynamodb = new DynamoDBClient()
 const userTable = 'michael-users'
 
 export const register = async (userInfo) => {
