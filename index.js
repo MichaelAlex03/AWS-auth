@@ -18,7 +18,8 @@ export const handler = async (event) => {
             response = await register(registerBody);
             break;
         case event.httpMethod === 'POST' && event.path === LOGIN_PATH:
-            response = buildResponse(200, 'success');
+            const loginBody = JSON.parse(event.body);
+            response = login(loginBody);
             break;
         case event.httpMethod === 'POST' && event.path === VERIFY_PATH:
             response = buildResponse(200, 'success');
