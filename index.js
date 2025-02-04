@@ -1,5 +1,6 @@
 import { buildResponse } from './utils/util';
 import { register } from './services/register';
+import { login } from './services/login'
 
 const HEALTH_PATH = '/health';
 const REGISTER_PATH = '/register';
@@ -19,7 +20,7 @@ export const handler = async (event) => {
             break;
         case event.httpMethod === 'POST' && event.path === LOGIN_PATH:
             const loginBody = JSON.parse(event.body);
-            response = login(loginBody);
+            response = await login(loginBody);
             break;
         case event.httpMethod === 'POST' && event.path === VERIFY_PATH:
             response = buildResponse(200, 'success');
