@@ -23,7 +23,8 @@ export const handler = async (event) => {
             response = await login(loginBody);
             break;
         case event.httpMethod === 'POST' && event.path === VERIFY_PATH:
-            response = buildResponse(200, 'success');
+            const verifyBody = JSON.parse(event.body);
+            response = verify(verifyBody)
             break;
         default:
             response = buildResponse(404, '404 Not Found');
